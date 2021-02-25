@@ -8,10 +8,10 @@ import {CheckoutForm} from '../model/checkoutForm';
 })
 export class CheckoutComponent implements OnInit {
 
-  productsAvailable = ['Iphone', 'Samsung Soundbar',
+  productsAvailable = ['iPhone', 'Samsung Soundbar',
     'HP Laptop', 'Sony Headphones'];
 
-  checkoutForm = new CheckoutForm('', this.productsAvailable[0] , 0, new Date() );
+  checkoutForm = new CheckoutForm('', this.productsAvailable[0] , 1, new Date() );
 
   submitted = false;
 

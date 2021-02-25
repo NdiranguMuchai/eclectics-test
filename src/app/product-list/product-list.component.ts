@@ -9,8 +9,8 @@ import {Product} from '../model/product.model';
 export class ProductListComponent implements OnInit {
   @Output() productWasSelected = new EventEmitter<Product>();
   products: Product[] = [
-    new Product('i phone', 80000, 'some url', '15%' ),
-    new Product('soundbar', 20000, 'some url', '25%' )
+    new Product('iPhone', 80000, 'some url', '15% Discount' ),
+    new Product('Samsung Soundbar', 20000, 'some url', '25% Discount' )
   ];
   constructor() { }
 
