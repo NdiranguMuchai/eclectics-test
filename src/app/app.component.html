@@ -3,8 +3,9 @@
   <div class="row">
     <div class="col-md-12">
       <app-product-list *ngIf="loadedFeature === 'product'"></app-product-list>
+      <app-checkout *ngIf="loadedFeature !=='product'"></app-checkout>
+
     </div>
   </div>
 </div>
 
-<!--<app-checkout></app-checkout>-->
