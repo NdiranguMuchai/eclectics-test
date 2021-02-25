@@ -1,0 +1,75 @@
+<div class="container">
+  <div [hidden]="submitted">
+
+    <h2>Checkout</h2>
+
+    <form (ngSubmit)="onSubmit()" #purchaseForm="ngForm">
+
+      <div class="form-group">
+        <label for="username">Username</label>
+        <input type="text" class="form-control" id="username" required [(ngModel)]="checkoutForm.username" name="username" #username="ngModel">
+
+        <div [hidden]="username.valid || username.pristine"
+             class="alert alert-danger">
+          Name is required
+        </div>
+
+      </div>
+
+      <div class="form-group">
+        <label for="product">Product</label>
+        <select  class="form-control" id="product" required [(ngModel)]="checkoutForm.product" name="product" #product="ngModel">
+          <option *ngFor="let product of productsAvailable" [value]="product">{{product}}</option>
+        </select>
+        <div [hidden]="product.valid || product.pristine"
+             class="alert alert-danger">
+          Product is required
+        </div>
+
+      </div>
+
+
+      <div class="form-group">
+        <label for="items">Items</label>
+        <input type="number" class="form-control" id="items" [(ngModel)]="checkoutForm.items" name="items">
+      </div>
+
+
+      <div class="form-group">
+        <label for="date">Choose a date</label>
+        <input class="form-control" id="date" matInput [matDatepicker]="picker" [(ngModel)]="checkoutForm.dateOfPurchase" name="date">
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+      </div>
+
+
+      <button type="submit" class="btn btn-success" [disabled]="!purchaseForm.form.valid">Submit</button>
+      <!--      <button type="button" class="pull-right btn btn-warning" (click)="blankForm(); bookingForm.reset()">Clear</button>-->
+
+    </form>
+  </div>
+  <div [hidden]="!submitted">
+    <h2>Purchase Details:</h2>
+
+    <div class="row">
+      <div class="col-xs-9"><b>Username:</b>  {{ checkoutForm.username }}</div>
+    </div>
+
+
+    <div class="row">
+      <div class="col-xs-9"> <b>Product:</b>  {{ checkoutForm.product }}</div>
+    </div>
+
+    <div class="row">
+      <div class="col-xs-9"> <b>Items:</b> {{ checkoutForm.items }}</div>
+    </div>
+
+    <div class="row">
+      <div class="col-xs-9"> <b>Date:</b> {{ checkoutForm.dateOfPurchase}}</div>
+    </div>
+
+
+    <br>
+    <button class="btn btn-primary" (click)="submitted=false">Edit</button>
+  </div>
+</div>
